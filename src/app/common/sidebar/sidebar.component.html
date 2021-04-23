@@ -1,0 +1,48 @@
+<a [ngClass]="ismenuOpen ? 'nav-toggle active' : 'nav-toggle'" (click)="menuOpen()">
+  <span></span>
+</a>
+<div [ngClass]="ismenuOpen ? 'sidebar active' : 'sidebar'">
+  <div class="sidebar-title">
+    <div class="image">
+      <a routerLink="/">
+        <h1>{{appName}}</h1>
+        <!-- <img src="assets/logo-white.png"> -->
+        <p>ADMIN</p>
+      </a>
+    </div>
+  </div>
+  <ul>
+    <li routerLinkActive="active" [routerLink]="['/user']" (click)="openPopup(false)">
+      <a (click)="menuOpen()">
+        <img src="assets/menu-icon-verified.png">
+        <p>User</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" [routerLink]="['/deleteduser']" (click)="openPopup(false)">
+      <a (click)="menuOpen()">
+        <img src="assets/menu-icon-verified.png">
+        <p>Deleted User</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" class="user-profile" (click)="openPopup(true)">
+      <a>
+        <img src="assets/menu-icon-user.png">
+        <p>{{storeName}}</p>
+      </a>
+    </li>
+    <ul [ngClass]="isPopupOpen ? 'profile-popup active' : 'profile-popup'">
+      <li>
+        <a [routerLink]="['/setting']" (click)="menuOpen();openPopup(false)">
+          <img src="assets/menu-icon-settings.png">
+          <p>Settings</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/login']" (click)="menuOpen();openPopup(false);logout()">
+          <img src="assets/menu-icon-logout.png">
+          <p>Logout</p>
+        </a>
+      </li>
+    </ul>
+  </ul>
+</div>
